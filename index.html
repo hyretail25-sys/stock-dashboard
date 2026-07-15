@@ -27,30 +27,51 @@
     --chip-critical-bg: rgba(208,59,59,0.10);
     --chip-oos-bg: rgba(11,11,11,0.07);
   }
-  @media (prefers-color-scheme: dark) {
-    .viz-root {
-      --surface-1: #1a1a19;
-      --page: #0d0d0d;
-      --text-primary: #ffffff;
-      --text-secondary: #c3c2b7;
-      --text-muted: #898781;
-      --grid: #2c2c2a;
-      --baseline: #383835;
-      --border: rgba(255,255,255,0.10);
-      --accent: #3987e5;
-      --accent-soft: #184f95;
-      --status-good: #0ca30c;
-      --status-good-text: #4ec24e;
-      --status-warning: #fab219;
-      --status-warning-text: #fab219;
-      --status-critical: #d03b3b;
-      --status-critical-text: #e66767;
-      --chip-good-bg: rgba(12,163,12,0.16);
-      --chip-warning-bg: rgba(250,178,25,0.14);
-      --chip-critical-bg: rgba(208,59,59,0.18);
-      --chip-oos-bg: rgba(255,255,255,0.08);
-    }
+  .viz-root[data-theme="black"] {
+    --surface-1: #1a1a19;
+    --page: #0d0d0d;
+    --text-primary: #ffffff;
+    --text-secondary: #c3c2b7;
+    --text-muted: #898781;
+    --grid: #2c2c2a;
+    --baseline: #383835;
+    --border: rgba(255,255,255,0.10);
+    --accent: #3987e5;
+    --accent-soft: #184f95;
+    --status-good: #0ca30c;
+    --status-good-text: #4ec24e;
+    --status-warning: #fab219;
+    --status-warning-text: #fab219;
+    --status-critical: #d03b3b;
+    --status-critical-text: #e66767;
+    --chip-good-bg: rgba(12,163,12,0.16);
+    --chip-warning-bg: rgba(250,178,25,0.14);
+    --chip-critical-bg: rgba(208,59,59,0.18);
+    --chip-oos-bg: rgba(255,255,255,0.08);
   }
+  .viz-root[data-theme="lavender"] {
+    --surface-1: #fdfcff;
+    --page: #f1edf9;
+    --text-primary: #241d3a;
+    --text-secondary: #574f70;
+    --text-muted: #8b84a3;
+    --grid: #e7e2f2;
+    --baseline: #c9c2dd;
+    --border: rgba(80,60,150,0.13);
+    --accent: #7c5cd6;
+    --accent-soft: #e5dcfa;
+    --status-good: #0ca30c;
+    --status-good-text: #006300;
+    --status-warning: #fab219;
+    --status-warning-text: #8a5f00;
+    --status-critical: #d03b3b;
+    --status-critical-text: #a82525;
+    --chip-good-bg: rgba(12,163,12,0.10);
+    --chip-warning-bg: rgba(250,178,25,0.14);
+    --chip-critical-bg: rgba(208,59,59,0.10);
+    --chip-oos-bg: rgba(80,60,150,0.08);
+  }
+  .viz-root[data-theme="lavender"] tbody tr:hover td { background: rgba(124,92,214,0.06); }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body.viz-root {
     font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
@@ -168,6 +189,11 @@
     <div class="meta-line">
       <span class="badge-sample" style="background: var(--chip-good-bg); color: var(--status-good-text);">이지어드민 연동</span>
       <span id="updatedAt"></span>
+      <div class="seg" id="themeSeg" title="테마">
+        <button data-t="white">화이트</button>
+        <button data-t="black">블랙</button>
+        <button data-t="lavender">라벤더</button>
+      </div>
     </div>
   </header>
 
@@ -232,7 +258,7 @@
    stock: 정상재고, backlog: 접수(미출고 주문), daily: 최근 14일 일별 발주수량(06-30→07-13),
    lead: 리드타임 override(없으면 기본값 사용)
    ============================================================ */
-const UPDATED_AT = "2026-07-15 17:26";
+const UPDATED_AT = "2026-07-15 17:41";
 const PRODUCTS = [
  {
   "code": "02991",
@@ -491,7 +517,7 @@ const PRODUCTS = [
   "code": "02967",
   "name": "백년뒤앤 스웨트린 정",
   "opt": "",
-  "stock": 574,
+  "stock": 573,
   "backlog": 0,
   "daily": [
    71,
@@ -1281,6 +1307,21 @@ $("#customWeeks").addEventListener("input", (e) => {
   }
   render();
 });
+
+// 테마 (화이트/블랙/라벤더) — 선택은 이 브라우저에 저장됨
+function applyTheme(t) {
+  document.body.dataset.theme = t;
+  document.querySelectorAll("#themeSeg button").forEach(b =>
+    b.classList.toggle("active", b.dataset.t === t));
+  try { localStorage.setItem("dashTheme", t); } catch (e) {}
+}
+$("#themeSeg").addEventListener("click", (e) => {
+  const b = e.target.closest("button"); if (!b) return;
+  applyTheme(b.dataset.t);
+});
+let savedTheme = null;
+try { savedTheme = localStorage.getItem("dashTheme"); } catch (e) {}
+applyTheme(savedTheme || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "black" : "white"));
 
 render();
 </script>
