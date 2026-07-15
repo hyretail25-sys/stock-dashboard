@@ -1,0 +1,50 @@
+name: 재고 대시보드 갱신
+
+on:
+  schedule:
+    - cron: "0 0 * * 1-5"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-dashboard
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: 체크아웃
+        uses: actions/checkout@v4
+
+      - name: Node 설치
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: 의존성 설치
+        run: |
+          npm install --no-audit --no-fund
+          npx playwright install --with-deps chromium
+
+      - name: 이지어드민 데이터 수집 및 대시보드 생성
+        env:
+          EZ_DOMAIN: ${{ secrets.EZ_DOMAIN }}
+          EZ_ID: ${{ secrets.EZ_ID }}
+          EZ_PW: ${{ secrets.EZ_PW }}
+        run: node scrape.js
+
+      - name: 변경사항 커밋
+        run: |
+          git config user.name "dashboard-bot"
+          git config user.email "actions@github.com"
+          git add index.html data.json
+          if git diff --cached --quiet; then
+            echo "변경 없음"
+          else
+            git commit -m "재고 대시보드 자동 갱신"
+            git push
+          fi
