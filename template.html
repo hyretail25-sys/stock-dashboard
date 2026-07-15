@@ -185,11 +185,12 @@
     <div class="lead-setting">적정재고 기준
       <div class="seg" id="weekSeg">
         <button data-w="4">4주</button>
-        <button data-w="6">6주</button>
-        <button data-w="8" class="active">8주</button>
+        <button data-w="6" class="active">6주</button>
+        <button data-w="8">8주</button>
         <button data-w="10">10주</button>
         <button data-w="12">12주</button>
       </div>
+      <input type="number" id="customWeeks" class="wk" style="width:58px" min="1" max="52" placeholder="직접"> 주
     </div>
   </div>
 
@@ -217,7 +218,7 @@
   </div>
 
   <footer class="note">
-    <b>판정 기준</b> — 판매속도는 최근 7일 일평균 발주수량. 가용재고 = 정상재고 − 미출고 주문. <b>적정재고 = 각 상품 8주 판매량</b>.
+    <b>판정 기준</b> — 판매속도는 최근 7일 일평균 발주수량. 가용재고 = 정상재고 − 미출고 주문. <b>적정재고 = 각 상품의 기준주(기본 6주) 판매량</b>.
     <b>발주 필요</b>: 가용재고 ≤ 적정재고(소진 기준주 이내). <b>주의</b>: 기준주 ~ +3주. <b>발주 권장수량</b>: 적정재고 − 가용재고. 우측 상단에서 전체 기준(주)을 바꾸거나, <b>기준(주)</b> 칸에서 상품별로 개별 조정할 수 있습니다.<br>
     데이터 출처: 이지어드민 [재고관리 > 현 재고조회]의 정상재고·접수, [일자별 재고조회]의 일별 발주수량(최근 14일). "재고 업데이트해줘"라고 요청하면 최신 데이터로 갱신됩니다.
   </footer>
@@ -238,7 +239,7 @@ const PRODUCTS = __PRODUCTS_JSON__;
 const $ = (s) => document.querySelector(s);
 const tbody = $("#tbody"), tip = $("#tip");
 let sortKey = "daysLeft", sortAsc = true, statusFilter = "all", query = "";
-let globalWeeks = 8;                 // 전체 적정재고 기준(주)
+let globalWeeks = 6;                 // 전체 적정재고 기준(주)
 const weekOverrides = {};            // 상품코드별 개별 기준(주) — 있으면 우선 적용
 
 function compute(p, baseWeeks) {
@@ -412,7 +413,21 @@ $("#q").addEventListener("input", (e) => { query = e.target.value.trim().toLower
 $("#weekSeg").addEventListener("click", (e) => {
   const b = e.target.closest("button"); if (!b) return;
   document.querySelectorAll("#weekSeg button").forEach(x => x.classList.remove("active"));
-  b.classList.add("active"); globalWeeks = parseInt(b.dataset.w); render();
+  b.classList.add("active"); globalWeeks = parseInt(b.dataset.w);
+  $("#customWeeks").value = "";                     // 직접입력 해제
+  render();
+});
+$("#customWeeks").addEventListener("input", (e) => {
+  const v = parseInt(e.target.value);
+  if (v >= 1 && v <= 52) {                          // 직접입력 우선 적용
+    globalWeeks = v;
+    document.querySelectorAll("#weekSeg button").forEach(x => x.classList.remove("active"));
+  } else if (e.target.value === "") {               // 지우면 기본 6주로 복귀
+    globalWeeks = 6;
+    document.querySelectorAll("#weekSeg button").forEach(x =>
+      x.classList.toggle("active", x.dataset.w === "6"));
+  }
+  render();
 });
 
 render();
