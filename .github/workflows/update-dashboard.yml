@@ -2,6 +2,7 @@ name: 재고 대시보드 갱신
 
 on:
   schedule:
+    # 매일 00:00 UTC = 한국시간 오전 9시 (평일만: 월~금)
     - cron: "0 0 * * 1-5"
   workflow_dispatch: {}
 
@@ -48,3 +49,9 @@ jobs:
             git commit -m "재고 대시보드 자동 갱신"
             git push
           fi
+
+      - name: 카카오톡 알림
+        env:
+          KAKAO_REST_KEY: ${{ secrets.KAKAO_REST_KEY }}
+          KAKAO_REFRESH_TOKEN: ${{ secrets.KAKAO_REFRESH_TOKEN }}
+        run: node kakao_notify.js
