@@ -159,6 +159,25 @@ async function main() {
     .replace("__PRODUCTS_JSON__", JSON.stringify(products, null, 1));
   fs.writeFileSync("index.html", html);
   fs.writeFileSync("data.json", JSON.stringify({ updatedAt, products }, null, 1));
+
+  // ---------- 5. 카톡용 요약 이미지 생성 ----------
+  console.log("[5/5] 요약 이미지 생성");
+  const b2 = await chromium.launch({ headless: true });
+  const pg = await b2.newPage({ viewport: { width: 1340, height: 800 }, deviceScaleFactor: 2 });
+  await pg.goto("file://" + process.cwd() + "/index.html");
+  await pg.waitForTimeout(1000);
+  await pg.evaluate(() => {
+    // 판매없음(부자재) 행과 필터/푸터는 이미지에서 제외해 한 장에 담기게
+    document.querySelectorAll("#tbody tr").forEach((tr) => {
+      const t = tr.querySelector(".chip-t");
+      if (t && t.textContent === "판매없음") tr.remove();
+    });
+    const f = document.querySelector("footer.note"); if (f) f.remove();
+    const flt = document.querySelector(".filters"); if (flt) flt.remove();
+  });
+  await pg.waitForTimeout(300);
+  await pg.screenshot({ path: "summary.png", fullPage: true });
+  await b2.close();
   console.log(`완료: ${products.length}개 품목, 기준 ${updatedAt} (KST)`);
 }
 
