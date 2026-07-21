@@ -42,7 +42,7 @@ jobs:
         run: |
           git config user.name "dashboard-bot"
           git config user.email "actions@github.com"
-          git add index.html data.json
+          git add index.html data.json summary.png
           if git diff --cached --quiet; then
             echo "변경 없음"
           else
@@ -54,4 +54,5 @@ jobs:
         env:
           KAKAO_REST_KEY: ${{ secrets.KAKAO_REST_KEY }}
           KAKAO_REFRESH_TOKEN: ${{ secrets.KAKAO_REFRESH_TOKEN }}
+          KAKAO_CLIENT_SECRET: ${{ secrets.KAKAO_CLIENT_SECRET }}
         run: node kakao_notify.js
