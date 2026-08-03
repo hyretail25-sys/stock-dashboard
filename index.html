@@ -258,7 +258,7 @@
    stock: 정상재고, backlog: 접수(미출고 주문), daily: 최근 14일 일별 발주수량(06-30→07-13),
    lead: 리드타임 override(없으면 기본값 사용)
    ============================================================ */
-const UPDATED_AT = "2026-07-31 19:06";
+const UPDATED_AT = "2026-08-03 21:41";
 const PRODUCTS = [
  {
   "code": "02991",
@@ -333,7 +333,7 @@ const PRODUCTS = [
   "code": "03676",
   "name": "루메네르 나노 MTS 기기 본품",
   "opt": "",
-  "stock": 3,
+  "stock": 0,
   "backlog": 0,
   "daily": [
    0,
@@ -349,14 +349,14 @@ const PRODUCTS = [
    0,
    0,
    0,
-   0
+   3
   ]
  },
  {
   "code": "03677",
   "name": "루메네르 나노 MTS 미세침 리필",
   "opt": "",
-  "stock": 265,
+  "stock": 255,
   "backlog": 0,
   "daily": [
    0,
@@ -372,7 +372,7 @@ const PRODUCTS = [
    0,
    0,
    0,
-   0
+   10
   ]
  },
  {
@@ -494,12 +494,9 @@ const PRODUCTS = [
   "code": "02966",
   "name": "백년뒤앤 몰입 영양제",
   "opt": "",
-  "stock": 425,
+  "stock": 421,
   "backlog": 0,
   "daily": [
-   0,
-   0,
-   2,
    0,
    0,
    1,
@@ -510,19 +507,19 @@ const PRODUCTS = [
    8,
    3,
    12,
-   1
+   1,
+   0,
+   0,
+   4
   ]
  },
  {
   "code": "02967",
   "name": "백년뒤앤 스웨트린 정",
   "opt": "",
-  "stock": 4624,
+  "stock": 4444,
   "backlog": 0,
   "daily": [
-   0,
-   0,
-   256,
    26,
    64,
    72,
@@ -533,19 +530,19 @@ const PRODUCTS = [
    79,
    84,
    78,
-   60
+   60,
+   0,
+   0,
+   180
   ]
  },
  {
   "code": "02973",
   "name": "백년뒤앤 중심 영양제",
   "opt": "",
-  "stock": 177,
+  "stock": 172,
   "backlog": 0,
   "daily": [
-   0,
-   0,
-   21,
    7,
    6,
    15,
@@ -556,7 +553,10 @@ const PRODUCTS = [
    1,
    2,
    16,
-   0
+   0,
+   0,
+   0,
+   5
   ]
  },
  {
@@ -632,12 +632,9 @@ const PRODUCTS = [
   "code": "03171",
   "name": "봄따라 이노트라B",
   "opt": "",
-  "stock": 154,
+  "stock": 151,
   "backlog": 0,
   "daily": [
-   0,
-   0,
-   12,
    15,
    0,
    1,
@@ -648,14 +645,17 @@ const PRODUCTS = [
    0,
    4,
    8,
-   1
+   1,
+   0,
+   0,
+   3
   ]
  },
  {
   "code": "03060",
   "name": "빼능 리파티논 정",
   "opt": "",
-  "stock": 1568,
+  "stock": 1565,
   "backlog": 0,
   "daily": [
    0,
@@ -667,11 +667,11 @@ const PRODUCTS = [
    0,
    0,
    0,
-   0,
-   0,
-   0,
    1,
-   0
+   0,
+   0,
+   0,
+   3
   ]
  },
  {
@@ -727,9 +727,6 @@ const PRODUCTS = [
   "stock": 469,
   "backlog": 0,
   "daily": [
-   0,
-   0,
-   0,
    1,
    0,
    0,
@@ -740,6 +737,9 @@ const PRODUCTS = [
    0,
    0,
    2,
+   0,
+   0,
+   0,
    0
   ]
  },
@@ -747,12 +747,9 @@ const PRODUCTS = [
   "code": "03880",
   "name": "순본담 흑마늘 정",
   "opt": "",
-  "stock": 949,
+  "stock": 922,
   "backlog": 0,
   "daily": [
-   0,
-   0,
-   115,
    33,
    32,
    38,
@@ -763,19 +760,19 @@ const PRODUCTS = [
    38,
    25,
    16,
-   15
+   15,
+   0,
+   0,
+   27
   ]
  },
  {
   "code": "02968",
   "name": "아이뮨랩 루마큐라 정",
   "opt": "",
-  "stock": 3,
-  "backlog": 676,
+  "stock": 2,
+  "backlog": 1214,
   "daily": [
-   0,
-   0,
-   860,
    347,
    264,
    216,
@@ -786,7 +783,10 @@ const PRODUCTS = [
    255,
    218,
    214,
-   182
+   182,
+   0,
+   0,
+   609
   ]
  },
  {
@@ -839,12 +839,9 @@ const PRODUCTS = [
   "code": "03591",
   "name": "업베이스 미노렉스",
   "opt": "",
-  "stock": 4100,
+  "stock": 4043,
   "backlog": 0,
   "daily": [
-   0,
-   0,
-   45,
    23,
    28,
    13,
@@ -855,7 +852,10 @@ const PRODUCTS = [
    31,
    18,
    8,
-   14
+   14,
+   0,
+   0,
+   57
   ]
  },
  {
@@ -955,11 +955,8 @@ const PRODUCTS = [
   "name": "자외선 완벽차단 아이뮨랩 수면안대",
   "opt": "",
   "stock": 1638,
-  "backlog": 1,
+  "backlog": 2,
   "daily": [
-   0,
-   0,
-   1,
    0,
    0,
    0,
@@ -968,6 +965,9 @@ const PRODUCTS = [
    0,
    2,
    0,
+   0,
+   0,
+   1,
    0,
    0,
    1
@@ -1001,7 +1001,7 @@ const PRODUCTS = [
   "name": "키르메스 GH마사지기본품",
   "opt": "",
   "stock": 0,
-  "backlog": 0,
+  "backlog": 2,
   "daily": [
    0,
    0,
@@ -1016,19 +1016,16 @@ const PRODUCTS = [
    0,
    0,
    0,
-   0
+   2
   ]
  },
  {
   "code": "02992",
   "name": "키르메스 성장기 전용 모스트린 산",
   "opt": "",
-  "stock": 712,
+  "stock": 708,
   "backlog": 0,
   "daily": [
-   0,
-   0,
-   11,
    9,
    13,
    8,
@@ -1039,7 +1036,10 @@ const PRODUCTS = [
    8,
    12,
    6,
-   7
+   7,
+   0,
+   0,
+   4
   ]
  },
  {
@@ -1092,12 +1092,9 @@ const PRODUCTS = [
   "code": "02965",
   "name": "한양체험단",
   "opt": "",
-  "stock": 542,
+  "stock": 534,
   "backlog": 0,
   "daily": [
-   0,
-   0,
-   6,
    6,
    0,
    0,
@@ -1108,7 +1105,10 @@ const PRODUCTS = [
    8,
    10,
    8,
-   10
+   10,
+   0,
+   0,
+   8
   ]
  }
 ];
