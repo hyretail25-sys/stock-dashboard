@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-09-14 13:20",
+ "updatedAt": "2026-09-15 13:20",
  "products": [
   {
    "code": "02991",
@@ -97,7 +97,7 @@
    "code": "03677",
    "name": "루메네르 나노 MTS 미세침 리필",
    "opt": "",
-   "stock": 255,
+   "stock": 245,
    "backlog": 35,
    "daily": [
     0,
@@ -235,7 +235,7 @@
    "code": "02966",
    "name": "백년뒤앤 몰입 영양제",
    "opt": "",
-   "stock": 268,
+   "stock": 264,
    "backlog": 0,
    "daily": [
     0,
@@ -258,7 +258,7 @@
    "code": "02967",
    "name": "백년뒤앤 스웨트린 정",
    "opt": "",
-   "stock": 3510,
+   "stock": 3507,
    "backlog": 0,
    "daily": [
     0,
@@ -282,7 +282,7 @@
    "name": "백년뒤앤 중심 영양제",
    "opt": "",
    "stock": 1,
-   "backlog": 106,
+   "backlog": 102,
    "daily": [
     0,
     0,
@@ -373,7 +373,7 @@
    "code": "03171",
    "name": "봄따라 이노트라B",
    "opt": "",
-   "stock": 73,
+   "stock": 70,
    "backlog": 0,
    "daily": [
     0,
@@ -465,7 +465,7 @@
    "code": "04077",
    "name": "상황버섯즙포",
    "opt": "",
-   "stock": 464,
+   "stock": 463,
    "backlog": 0,
    "daily": [
     0,
@@ -488,7 +488,7 @@
    "code": "03880",
    "name": "순본담 흑마늘 정",
    "opt": "",
-   "stock": 1599,
+   "stock": 1520,
    "backlog": 0,
    "daily": [
     0,
@@ -511,7 +511,7 @@
    "code": "02968",
    "name": "아이뮨랩 루마큐라 정",
    "opt": "",
-   "stock": 4893,
+   "stock": 4575,
    "backlog": 0,
    "daily": [
     0,
@@ -649,7 +649,7 @@
    "code": "03591",
    "name": "업베이스 미노렉스",
    "opt": "",
-   "stock": 3774,
+   "stock": 3773,
    "backlog": 0,
    "daily": [
     0,
@@ -811,7 +811,7 @@
    "name": "키르메스 GH마사지기본품",
    "opt": "",
    "stock": 0,
-   "backlog": 0,
+   "backlog": 1,
    "daily": [
     0,
     0,
@@ -833,7 +833,7 @@
    "code": "02992",
    "name": "키르메스 성장기 전용 모스트린 산",
    "opt": "",
-   "stock": 540,
+   "stock": 518,
    "backlog": 0,
    "daily": [
     0,
@@ -856,7 +856,7 @@
    "code": "04145",
    "name": "핀나이트랩- 핀 나이트 포뮬러",
    "opt": "",
-   "stock": 955,
+   "stock": 952,
    "backlog": 0,
    "daily": [
     0,
