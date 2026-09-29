@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-09-28 13:46",
+ "updatedAt": "2026-09-29 14:12",
  "products": [
   {
    "code": "02991",
@@ -258,7 +258,7 @@
    "code": "02967",
    "name": "백년뒤앤 스웨트린 정",
    "opt": "",
-   "stock": 3327,
+   "stock": 3324,
    "backlog": 0,
    "daily": [
     0,
@@ -282,7 +282,7 @@
    "name": "백년뒤앤 중심 영양제",
    "opt": "",
    "stock": 1,
-   "backlog": 210,
+   "backlog": 249,
    "daily": [
     0,
     0,
@@ -465,7 +465,7 @@
    "code": "04077",
    "name": "상황버섯즙포",
    "opt": "",
-   "stock": 460,
+   "stock": 459,
    "backlog": 0,
    "daily": [
     0,
@@ -488,7 +488,7 @@
    "code": "03880",
    "name": "순본담 흑마늘 정",
    "opt": "",
-   "stock": 1320,
+   "stock": 1319,
    "backlog": 0,
    "daily": [
     0,
@@ -511,7 +511,7 @@
    "code": "02968",
    "name": "아이뮨랩 루마큐라 정",
    "opt": "",
-   "stock": 3500,
+   "stock": 3491,
    "backlog": 0,
    "daily": [
     0,
