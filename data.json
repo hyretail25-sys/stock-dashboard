@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-09-30 13:59",
+ "updatedAt": "2026-10-01 14:13",
  "products": [
   {
    "code": "02991",
@@ -235,7 +235,7 @@
    "code": "02966",
    "name": "백년뒤앤 몰입 영양제",
    "opt": "",
-   "stock": 241,
+   "stock": 240,
    "backlog": 0,
    "daily": [
     0,
@@ -258,7 +258,7 @@
    "code": "02967",
    "name": "백년뒤앤 스웨트린 정",
    "opt": "",
-   "stock": 3302,
+   "stock": 3285,
    "backlog": 0,
    "daily": [
     0,
@@ -282,7 +282,7 @@
    "name": "백년뒤앤 중심 영양제",
    "opt": "",
    "stock": 1,
-   "backlog": 281,
+   "backlog": 305,
    "daily": [
     0,
     0,
@@ -373,7 +373,7 @@
    "code": "03171",
    "name": "봄따라 이노트라B",
    "opt": "",
-   "stock": 43,
+   "stock": 38,
    "backlog": 0,
    "daily": [
     0,
@@ -488,7 +488,7 @@
    "code": "03880",
    "name": "순본담 흑마늘 정",
    "opt": "",
-   "stock": 1307,
+   "stock": 3282,
    "backlog": 0,
    "daily": [
     0,
@@ -511,7 +511,7 @@
    "code": "02968",
    "name": "아이뮨랩 루마큐라 정",
    "opt": "",
-   "stock": 3362,
+   "stock": 3246,
    "backlog": 0,
    "daily": [
     0,
@@ -649,7 +649,7 @@
    "code": "03591",
    "name": "업베이스 미노렉스",
    "opt": "",
-   "stock": 3758,
+   "stock": 3752,
    "backlog": 0,
    "daily": [
     0,
@@ -856,7 +856,7 @@
    "code": "02992",
    "name": "키르메스 성장기 전용 모스트린 산",
    "opt": "",
-   "stock": 472,
+   "stock": 463,
    "backlog": 0,
    "daily": [
     0,
@@ -879,7 +879,7 @@
    "code": "04145",
    "name": "핀나이트랩- 핀 나이트 포뮬러",
    "opt": "",
-   "stock": 942,
+   "stock": 935,
    "backlog": 0,
    "daily": [
     0,
@@ -925,7 +925,7 @@
    "code": "02965",
    "name": "한양체험단",
    "opt": "",
-   "stock": 518,
+   "stock": 516,
    "backlog": 0,
    "daily": [
     0,
