@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-14 13:22",
+ "updatedAt": "2026-10-15 13:04",
  "products": [
   {
    "code": "02991",
@@ -28,7 +28,7 @@
    "code": "02974",
    "name": "더스트백",
    "opt": "",
-   "stock": 110,
+   "stock": 105,
    "backlog": 0,
    "daily": [
     0,
@@ -51,7 +51,7 @@
    "code": "02985",
    "name": "듀얼 충전기",
    "opt": "",
-   "stock": 27,
+   "stock": 22,
    "backlog": 0,
    "daily": [
     0,
@@ -143,7 +143,7 @@
    "code": "02969",
    "name": "마사지기 포장박스",
    "opt": "",
-   "stock": 881,
+   "stock": 876,
    "backlog": 0,
    "daily": [
     0,
@@ -166,7 +166,7 @@
    "code": "02983",
    "name": "마사지기 포장박스 스티커",
    "opt": "",
-   "stock": 2197,
+   "stock": 2192,
    "backlog": 0,
    "daily": [
     0,
@@ -189,7 +189,7 @@
    "code": "02984",
    "name": "마사지기 품질보증서",
    "opt": "",
-   "stock": 29,
+   "stock": 24,
    "backlog": 0,
    "daily": [
     0,
@@ -258,7 +258,7 @@
    "code": "02966",
    "name": "백년뒤앤 몰입 영양제",
    "opt": "",
-   "stock": 226,
+   "stock": 222,
    "backlog": 0,
    "daily": [
     0,
@@ -281,7 +281,7 @@
    "code": "02967",
    "name": "백년뒤앤 스웨트린 정",
    "opt": "",
-   "stock": 3156,
+   "stock": 3145,
    "backlog": 0,
    "daily": [
     0,
@@ -304,7 +304,7 @@
    "code": "02973",
    "name": "백년뒤앤 중심 영양제",
    "opt": "",
-   "stock": 2574,
+   "stock": 2582,
    "backlog": 0,
    "daily": [
     0,
@@ -327,7 +327,7 @@
    "code": "03132",
    "name": "본품",
    "opt": "",
-   "stock": 90,
+   "stock": 80,
    "backlog": 0,
    "daily": [
     0,
@@ -350,7 +350,7 @@
    "code": "03133",
    "name": "본품 리모컨",
    "opt": "",
-   "stock": 107,
+   "stock": 97,
    "backlog": 0,
    "daily": [
     0,
@@ -373,7 +373,7 @@
    "code": "03134",
    "name": "본품 충전선",
    "opt": "",
-   "stock": 106,
+   "stock": 96,
    "backlog": 0,
    "daily": [
     0,
@@ -396,7 +396,7 @@
    "code": "03171",
    "name": "봄따라 이노트라B",
    "opt": "",
-   "stock": 25,
+   "stock": 24,
    "backlog": 0,
    "daily": [
     0,
@@ -442,7 +442,7 @@
    "code": "03135",
    "name": "사용설명서",
    "opt": "",
-   "stock": 860,
+   "stock": 855,
    "backlog": 0,
    "daily": [
     0,
@@ -534,7 +534,7 @@
    "code": "02968",
    "name": "아이뮨랩 루마큐라 정",
    "opt": "",
-   "stock": 2098,
+   "stock": 2028,
    "backlog": 0,
    "daily": [
     0,
@@ -695,7 +695,7 @@
    "code": "03136",
    "name": "워터스프레이",
    "opt": "",
-   "stock": 38,
+   "stock": 33,
    "backlog": 0,
    "daily": [
     0,
@@ -718,7 +718,7 @@
    "code": "03130",
    "name": "워터스프레이 마감 스티커",
    "opt": "",
-   "stock": 443,
+   "stock": 438,
    "backlog": 0,
    "daily": [
     0,
@@ -810,7 +810,7 @@
    "code": "02977",
    "name": "자외선 완벽차단 아이뮨랩 수면안대",
    "opt": "",
-   "stock": 1620,
+   "stock": 1619,
    "backlog": 0,
    "daily": [
     0,
@@ -879,7 +879,7 @@
    "code": "02992",
    "name": "키르메스 성장기 전용 모스트린 산",
    "opt": "",
-   "stock": 388,
+   "stock": 384,
    "backlog": 0,
    "daily": [
     0,
