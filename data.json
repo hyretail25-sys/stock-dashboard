@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-16 13:00",
+ "updatedAt": "2026-10-19 13:06",
  "products": [
   {
    "code": "02991",
@@ -258,7 +258,7 @@
    "code": "02966",
    "name": "백년뒤앤 몰입 영양제",
    "opt": "",
-   "stock": 222,
+   "stock": 216,
    "backlog": 0,
    "daily": [
     0,
@@ -304,7 +304,7 @@
    "code": "02973",
    "name": "백년뒤앤 중심 영양제",
    "opt": "",
-   "stock": 2582,
+   "stock": 2577,
    "backlog": 0,
    "daily": [
     0,
@@ -534,7 +534,7 @@
    "code": "02968",
    "name": "아이뮨랩 루마큐라 정",
    "opt": "",
-   "stock": 1910,
+   "stock": 1831,
    "backlog": 0,
    "daily": [
     0,
@@ -857,7 +857,7 @@
    "name": "키르메스 GH마사지기본품",
    "opt": "",
    "stock": 0,
-   "backlog": 0,
+   "backlog": 1,
    "daily": [
     0,
     0,
@@ -879,7 +879,7 @@
    "code": "02992",
    "name": "키르메스 성장기 전용 모스트린 산",
    "opt": "",
-   "stock": 383,
+   "stock": 379,
    "backlog": 0,
    "daily": [
     0,
@@ -902,7 +902,7 @@
    "code": "04145",
    "name": "핀나이트랩- 핀 나이트 포뮬러",
    "opt": "",
-   "stock": 924,
+   "stock": 923,
    "backlog": 0,
    "daily": [
     0,
