@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-19 13:06",
+ "updatedAt": "2026-10-20 13:19",
  "products": [
   {
    "code": "02991",
@@ -28,7 +28,7 @@
    "code": "02974",
    "name": "더스트백",
    "opt": "",
-   "stock": 105,
+   "stock": 103,
    "backlog": 0,
    "daily": [
     0,
@@ -51,7 +51,7 @@
    "code": "02985",
    "name": "듀얼 충전기",
    "opt": "",
-   "stock": 22,
+   "stock": 20,
    "backlog": 0,
    "daily": [
     0,
@@ -143,7 +143,7 @@
    "code": "02969",
    "name": "마사지기 포장박스",
    "opt": "",
-   "stock": 876,
+   "stock": 874,
    "backlog": 0,
    "daily": [
     0,
@@ -166,7 +166,7 @@
    "code": "02983",
    "name": "마사지기 포장박스 스티커",
    "opt": "",
-   "stock": 2192,
+   "stock": 2190,
    "backlog": 0,
    "daily": [
     0,
@@ -189,7 +189,7 @@
    "code": "02984",
    "name": "마사지기 품질보증서",
    "opt": "",
-   "stock": 24,
+   "stock": 22,
    "backlog": 0,
    "daily": [
     0,
@@ -258,7 +258,7 @@
    "code": "02966",
    "name": "백년뒤앤 몰입 영양제",
    "opt": "",
-   "stock": 216,
+   "stock": 215,
    "backlog": 0,
    "daily": [
     0,
@@ -281,7 +281,7 @@
    "code": "02967",
    "name": "백년뒤앤 스웨트린 정",
    "opt": "",
-   "stock": 3142,
+   "stock": 3138,
    "backlog": 0,
    "daily": [
     0,
@@ -304,7 +304,7 @@
    "code": "02973",
    "name": "백년뒤앤 중심 영양제",
    "opt": "",
-   "stock": 2577,
+   "stock": 2569,
    "backlog": 0,
    "daily": [
     0,
@@ -327,7 +327,7 @@
    "code": "03132",
    "name": "본품",
    "opt": "",
-   "stock": 80,
+   "stock": 76,
    "backlog": 0,
    "daily": [
     0,
@@ -350,7 +350,7 @@
    "code": "03133",
    "name": "본품 리모컨",
    "opt": "",
-   "stock": 97,
+   "stock": 93,
    "backlog": 0,
    "daily": [
     0,
@@ -373,7 +373,7 @@
    "code": "03134",
    "name": "본품 충전선",
    "opt": "",
-   "stock": 96,
+   "stock": 92,
    "backlog": 0,
    "daily": [
     0,
@@ -396,7 +396,7 @@
    "code": "03171",
    "name": "봄따라 이노트라B",
    "opt": "",
-   "stock": 24,
+   "stock": 22,
    "backlog": 0,
    "daily": [
     0,
@@ -442,7 +442,7 @@
    "code": "03135",
    "name": "사용설명서",
    "opt": "",
-   "stock": 855,
+   "stock": 853,
    "backlog": 0,
    "daily": [
     0,
@@ -511,7 +511,7 @@
    "code": "03880",
    "name": "순본담 흑마늘 정",
    "opt": "",
-   "stock": 3216,
+   "stock": 3206,
    "backlog": 0,
    "daily": [
     0,
@@ -534,7 +534,7 @@
    "code": "02968",
    "name": "아이뮨랩 루마큐라 정",
    "opt": "",
-   "stock": 1831,
+   "stock": 1720,
    "backlog": 0,
    "daily": [
     0,
@@ -672,7 +672,7 @@
    "code": "03591",
    "name": "업베이스 미노렉스",
    "opt": "",
-   "stock": 3742,
+   "stock": 3741,
    "backlog": 0,
    "daily": [
     0,
@@ -695,7 +695,7 @@
    "code": "03136",
    "name": "워터스프레이",
    "opt": "",
-   "stock": 33,
+   "stock": 31,
    "backlog": 0,
    "daily": [
     0,
@@ -718,7 +718,7 @@
    "code": "03130",
    "name": "워터스프레이 마감 스티커",
    "opt": "",
-   "stock": 438,
+   "stock": 436,
    "backlog": 0,
    "daily": [
     0,
@@ -856,8 +856,8 @@
    "code": "03000",
    "name": "키르메스 GH마사지기본품",
    "opt": "",
-   "stock": 0,
-   "backlog": 1,
+   "stock": 1,
+   "backlog": 0,
    "daily": [
     0,
     0,
@@ -879,7 +879,7 @@
    "code": "02992",
    "name": "키르메스 성장기 전용 모스트린 산",
    "opt": "",
-   "stock": 379,
+   "stock": 375,
    "backlog": 0,
    "daily": [
     0,
