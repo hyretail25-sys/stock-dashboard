@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-27 13:34",
+ "updatedAt": "2026-10-28 14:00",
  "products": [
   {
    "code": "02991",
@@ -97,7 +97,7 @@
    "code": "03676",
    "name": "루메네르 나노 MTS 기기 본품",
    "opt": "",
-   "stock": 43,
+   "stock": 42,
    "backlog": 0,
    "daily": [
     0,
@@ -281,7 +281,7 @@
    "code": "02967",
    "name": "백년뒤앤 스웨트린 정",
    "opt": "",
-   "stock": 3121,
+   "stock": 3103,
    "backlog": 0,
    "daily": [
     0,
@@ -304,7 +304,7 @@
    "code": "02973",
    "name": "백년뒤앤 중심 영양제",
    "opt": "",
-   "stock": 2524,
+   "stock": 2519,
    "backlog": 0,
    "daily": [
     0,
@@ -396,7 +396,7 @@
    "code": "03171",
    "name": "봄따라 이노트라B",
    "opt": "",
-   "stock": 10,
+   "stock": 8,
    "backlog": 0,
    "daily": [
     0,
@@ -534,7 +534,7 @@
    "code": "02968",
    "name": "아이뮨랩 루마큐라 정",
    "opt": "",
-   "stock": 1213,
+   "stock": 1126,
    "backlog": 0,
    "daily": [
     0,
@@ -879,7 +879,7 @@
    "code": "02992",
    "name": "키르메스 성장기 전용 모스트린 산",
    "opt": "",
-   "stock": 338,
+   "stock": 335,
    "backlog": 0,
    "daily": [
     0,
@@ -902,7 +902,7 @@
    "code": "04145",
    "name": "핀나이트랩- 핀 나이트 포뮬러",
    "opt": "",
-   "stock": 920,
+   "stock": 918,
    "backlog": 0,
    "daily": [
     0,
