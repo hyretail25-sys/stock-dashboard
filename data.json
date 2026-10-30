@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-29 14:13",
+ "updatedAt": "2026-10-30 14:12",
  "products": [
   {
    "code": "02991",
@@ -304,8 +304,8 @@
    "code": "02973",
    "name": "백년뒤앤 중심 영양제",
    "opt": "",
-   "stock": 2519,
-   "backlog": 2,
+   "stock": 2517,
+   "backlog": 14,
    "daily": [
     0,
     0,
@@ -419,7 +419,7 @@
    "code": "03060",
    "name": "빼능 리파티논 정",
    "opt": "",
-   "stock": 1563,
+   "stock": 1560,
    "backlog": 0,
    "daily": [
     0,
@@ -534,8 +534,8 @@
    "code": "02968",
    "name": "아이뮨랩 루마큐라 정",
    "opt": "",
-   "stock": 1102,
-   "backlog": 6,
+   "stock": 995,
+   "backlog": 25,
    "daily": [
     0,
     0,
@@ -673,7 +673,7 @@
    "name": "업베이스 미노렉스",
    "opt": "",
    "stock": 3734,
-   "backlog": 0,
+   "backlog": 4,
    "daily": [
     0,
     0,
@@ -879,8 +879,8 @@
    "code": "02992",
    "name": "키르메스 성장기 전용 모스트린 산",
    "opt": "",
-   "stock": 335,
-   "backlog": 3,
+   "stock": 323,
+   "backlog": 1,
    "daily": [
     0,
     0,
@@ -902,8 +902,8 @@
    "code": "04145",
    "name": "핀나이트랩- 핀 나이트 포뮬러",
    "opt": "",
-   "stock": 918,
-   "backlog": 2,
+   "stock": 916,
+   "backlog": 0,
    "daily": [
     0,
     0,
