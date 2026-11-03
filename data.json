@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-30 14:12",
+ "updatedAt": "2026-11-03 15:04",
  "products": [
   {
    "code": "02991",
@@ -97,7 +97,7 @@
    "code": "03676",
    "name": "루메네르 나노 MTS 기기 본품",
    "opt": "",
-   "stock": 42,
+   "stock": 41,
    "backlog": 0,
    "daily": [
     0,
@@ -120,7 +120,7 @@
    "code": "03677",
    "name": "루메네르 나노 MTS 미세침 리필",
    "opt": "",
-   "stock": 130,
+   "stock": 120,
    "backlog": 0,
    "daily": [
     0,
@@ -258,7 +258,7 @@
    "code": "02966",
    "name": "백년뒤앤 몰입 영양제",
    "opt": "",
-   "stock": 214,
+   "stock": 208,
    "backlog": 0,
    "daily": [
     0,
@@ -281,7 +281,7 @@
    "code": "02967",
    "name": "백년뒤앤 스웨트린 정",
    "opt": "",
-   "stock": 3103,
+   "stock": 3084,
    "backlog": 0,
    "daily": [
     0,
@@ -304,8 +304,8 @@
    "code": "02973",
    "name": "백년뒤앤 중심 영양제",
    "opt": "",
-   "stock": 2517,
-   "backlog": 14,
+   "stock": 2483,
+   "backlog": 0,
    "daily": [
     0,
     0,
@@ -396,7 +396,7 @@
    "code": "03171",
    "name": "봄따라 이노트라B",
    "opt": "",
-   "stock": 5,
+   "stock": 0,
    "backlog": 0,
    "daily": [
     0,
@@ -511,7 +511,7 @@
    "code": "03880",
    "name": "순본담 흑마늘 정",
    "opt": "",
-   "stock": 3190,
+   "stock": 3177,
    "backlog": 0,
    "daily": [
     0,
@@ -534,8 +534,8 @@
    "code": "02968",
    "name": "아이뮨랩 루마큐라 정",
    "opt": "",
-   "stock": 995,
-   "backlog": 25,
+   "stock": 740,
+   "backlog": 0,
    "daily": [
     0,
     0,
@@ -672,8 +672,8 @@
    "code": "03591",
    "name": "업베이스 미노렉스",
    "opt": "",
-   "stock": 3734,
-   "backlog": 4,
+   "stock": 3719,
+   "backlog": 0,
    "daily": [
     0,
     0,
@@ -810,7 +810,7 @@
    "code": "02977",
    "name": "자외선 완벽차단 아이뮨랩 수면안대",
    "opt": "",
-   "stock": 1618,
+   "stock": 1617,
    "backlog": 0,
    "daily": [
     0,
@@ -879,8 +879,8 @@
    "code": "02992",
    "name": "키르메스 성장기 전용 모스트린 산",
    "opt": "",
-   "stock": 323,
-   "backlog": 1,
+   "stock": 308,
+   "backlog": 0,
    "daily": [
     0,
     0,
