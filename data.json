@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-03 15:04",
+ "updatedAt": "2026-11-04 14:42",
  "products": [
   {
    "code": "02991",
@@ -281,7 +281,7 @@
    "code": "02967",
    "name": "백년뒤앤 스웨트린 정",
    "opt": "",
-   "stock": 3084,
+   "stock": 3079,
    "backlog": 0,
    "daily": [
     0,
@@ -397,7 +397,7 @@
    "name": "봄따라 이노트라B",
    "opt": "",
    "stock": 0,
-   "backlog": 0,
+   "backlog": 2,
    "daily": [
     0,
     0,
@@ -511,7 +511,7 @@
    "code": "03880",
    "name": "순본담 흑마늘 정",
    "opt": "",
-   "stock": 3177,
+   "stock": 3168,
    "backlog": 0,
    "daily": [
     0,
@@ -534,7 +534,7 @@
    "code": "02968",
    "name": "아이뮨랩 루마큐라 정",
    "opt": "",
-   "stock": 740,
+   "stock": 672,
    "backlog": 0,
    "daily": [
     0,
@@ -672,7 +672,7 @@
    "code": "03591",
    "name": "업베이스 미노렉스",
    "opt": "",
-   "stock": 3719,
+   "stock": 3718,
    "backlog": 0,
    "daily": [
     0,
@@ -879,7 +879,7 @@
    "code": "02992",
    "name": "키르메스 성장기 전용 모스트린 산",
    "opt": "",
-   "stock": 308,
+   "stock": 305,
    "backlog": 0,
    "daily": [
     0,
