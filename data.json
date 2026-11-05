@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-04 14:42",
+ "updatedAt": "2026-11-05 15:00",
  "products": [
   {
    "code": "02991",
@@ -258,7 +258,7 @@
    "code": "02966",
    "name": "백년뒤앤 몰입 영양제",
    "opt": "",
-   "stock": 208,
+   "stock": 205,
    "backlog": 0,
    "daily": [
     0,
@@ -304,7 +304,7 @@
    "code": "02973",
    "name": "백년뒤앤 중심 영양제",
    "opt": "",
-   "stock": 2483,
+   "stock": 2465,
    "backlog": 0,
    "daily": [
     0,
@@ -511,7 +511,7 @@
    "code": "03880",
    "name": "순본담 흑마늘 정",
    "opt": "",
-   "stock": 3168,
+   "stock": 3167,
    "backlog": 0,
    "daily": [
     0,
@@ -534,7 +534,7 @@
    "code": "02968",
    "name": "아이뮨랩 루마큐라 정",
    "opt": "",
-   "stock": 672,
+   "stock": 605,
    "backlog": 0,
    "daily": [
     0,
@@ -672,7 +672,7 @@
    "code": "03591",
    "name": "업베이스 미노렉스",
    "opt": "",
-   "stock": 3718,
+   "stock": 3717,
    "backlog": 0,
    "daily": [
     0,
@@ -857,7 +857,7 @@
    "name": "키르메스 GH마사지기본품",
    "opt": "",
    "stock": 0,
-   "backlog": 0,
+   "backlog": 1,
    "daily": [
     0,
     0,
