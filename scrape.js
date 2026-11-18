@@ -123,7 +123,8 @@ async function main() {
     if (!ht || !bt) return { error: "그리드를 찾지 못함" };
     const heads = [...ht.querySelectorAll("th")].map((t) => t.innerText.trim());
     const dayCols = heads.map((h, i) => (/^\d{2}-\d{2}$/.test(h) ? i : -1)).filter((i) => i >= 0);
-    const codeIdx = heads.findIndex((h) => h.replace(/\s+/g, "") === "상품코드");
+    // 숨김 열과 표시 열에 상품코드가 중복될 수 있다.
+    const codeIdx = heads.map((h) => h.replace(/\s+/g, "")).lastIndexOf("상품코드");
     const num = (s) => parseInt((s || "0").replace(/[^\d-]/g, ""), 10) || 0;
     const rows = [...bt.rows]
       .filter((r) => r.cells.length >= heads.length - 1)
@@ -132,10 +133,22 @@ async function main() {
         daily: dayCols.map((i) => num(r.cells[i] && r.cells[i].innerText)),
       }))
       .filter((r) => r.code);
-    return { heads, rows, dayCount: dayCols.length };
+    return {
+      heads, rows, dayCount: dayCols.length, codeIdx,
+      gridRowCount: bt.rows.length,
+      firstRow: bt.rows[0] ? [...bt.rows[0].cells].map((c) => c.innerText.trim().slice(0, 50)) : [],
+      gridMessage: document.querySelector(".ui-jqgrid-empty, .ui-jqgrid-norecords")?.innerText.trim() || "",
+    };
   });
   if (salesRows.error) throw new Error("일자별 재고조회: " + salesRows.error);
   console.log(`판매 데이터 ${salesRows.rows.length}개 품목, ${salesRows.dayCount}일치 수집`);
+  if (salesRows.dayCount !== DAYS || salesRows.rows.length === 0) {
+    throw new Error("판매 데이터 수집 실패: " + JSON.stringify({
+      headers: salesRows.heads, dayCount: salesRows.dayCount,
+      codeIdx: salesRows.codeIdx, gridRowCount: salesRows.gridRowCount,
+      firstRow: salesRows.firstRow, gridMessage: salesRows.gridMessage,
+    }));
+  }
 
   await browser.close();
 

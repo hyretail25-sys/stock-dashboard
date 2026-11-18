@@ -1,6 +1,10 @@
 name: 재고 대시보드 갱신
 
 on:
+  push:
+    paths:
+      - scrape.js
+      - .github/workflows/update-dashboard.yml
   schedule:
     # 매일 00:00 UTC = 한국시간 오전 9시 (평일만: 월~금)
     - cron: "0 0 * * 1-5"
