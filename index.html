@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>재고 현황 대시보드</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#3b7cf6">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
   /* ============ 테마 토큰 ============ */
@@ -361,6 +365,11 @@
     width: 38px; height: 38px; border-radius: 12px; flex: 0 0 auto; display: grid; place-items: center;
     font-size: 13px; font-weight: 800; color: #fff;
   }
+  .thumb.logo, .sup-logo.logo {
+    background: #fff; padding: 0; overflow: hidden;
+    box-shadow: inset 0 0 0 1px rgba(30,60,120,0.08), 0 4px 10px -6px rgba(30,60,120,0.35);
+  }
+  .thumb.logo img, .sup-logo.logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .pname { font-weight: 700; max-width: 190px; overflow: hidden; text-overflow: ellipsis; }
   .pcode { color: var(--text-muted); font-size: 11.5px; }
   .num-strong { font-weight: 700; }
@@ -2067,7 +2076,20 @@ const chip = (s) => `<span class="chip ${CHIP_CLASS[s]}">${ICONS[s]}<span class=
 /* 상품·발주처 이니셜 색 — 이름에서 고정적으로 뽑음(정렬이 바뀌어도 색 유지) */
 const THUMB = [["#6ea8ff","#3b7cf6"],["#a78bfa","#7c5cd6"],["#5eead4","#14b8a6"],["#fdba74","#f97316"],["#f9a8d4","#ec4899"],["#93c5fd","#2563eb"],["#86efac","#16a34a"],["#fcd34d","#d97706"]];
 function hue(str) { let h = 0; for (const c of String(str)) h = (h * 31 + c.charCodeAt(0)) >>> 0; return THUMB[h % THUMB.length]; }
+/* 브랜드 로고 — 상품명 앞(없으면 안쪽)에 브랜드명이 있으면 logos/ 의 로고를 씀 */
+const BRANDS = [
+  // [브랜드명, 로고 파일]  — 각 브랜드 공식몰 로고를 정사각형으로 잘라 logos/ 에 둠. 없는 브랜드는 이니셜로 표시
+  ["아이뮨랩", "eyemyunlab.png"], ["루마큐라", "eyemyunlab.png"],   // 루마큐라 = 아이뮨랩 제품 라인
+  ["루메네르", "lumenere.png"], ["키르메스", "kirmes.png"], ["백년뒤앤", "baeknyeon.png"],
+  ["순본담", "sunbondam.png"], ["업베이스", "upbase.png"], ["핀나이트랩", "finnightlab.png"], ["누브릭", "nubrick.png"],
+];
+function brandOf(name) {
+  const n = String(name);
+  return BRANDS.find(([b]) => n.startsWith(b)) || BRANDS.find(([b]) => n.includes(b)) || null;
+}
 function thumb(name, cls = "thumb") {
+  const br = brandOf(name);
+  if (br) return `<div class="${cls} logo" title="${esc(br[0])}"><img src="logos/${esc(br[1])}" alt="${esc(br[0])}"></div>`;
   const [a, b] = hue(name);
   const ch = String(name).replace(/^[\s\[\(]+/, "").charAt(0) || "?";
   return `<div class="${cls}" style="background:linear-gradient(140deg,${a},${b})">${esc(ch)}</div>`;
