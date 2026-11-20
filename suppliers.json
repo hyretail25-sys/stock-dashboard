@@ -1,0 +1,10 @@
+{
+ "version": 1,
+ "updatedAt": "",
+ "suppliers": [],
+ "products": {},
+ "settings": {
+  "weeks": 6,
+  "lead": 7
+ }
+}

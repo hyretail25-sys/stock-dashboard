@@ -51,6 +51,8 @@ jobs:
             echo "변경 없음"
           else
             git commit -m "재고 대시보드 자동 갱신"
+            # 대시보드에서 발주처(suppliers.json)를 저장했을 수 있으니 최신을 받아 이어붙인 뒤 push
+            git pull --rebase origin main
             git push
           fi
 
