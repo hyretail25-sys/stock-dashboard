@@ -370,7 +370,7 @@
     box-shadow: inset 0 0 0 1px rgba(30,60,120,0.08), 0 4px 10px -6px rgba(30,60,120,0.35);
   }
   .thumb.logo img, .sup-logo.logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .pname { font-weight: 700; max-width: 190px; overflow: hidden; text-overflow: ellipsis; }
+  .pname { font-weight: 700; max-width: 176px; overflow: hidden; text-overflow: ellipsis; }
   .pcode { color: var(--text-muted); font-size: 11.5px; }
   .num-strong { font-weight: 700; }
   .dim { color: var(--text-muted); }
@@ -468,6 +468,60 @@
   .help .warn { color: var(--status-warning-text); font-weight: 700; }
 
   /* ============ 모달 / 토스트 / 툴팁 ============ */
+  /* 발주처 버튼 · 상품 상세 */
+  .sup-btn {
+    display: inline-flex; align-items: center; gap: 7px; height: 32px; max-width: 122px; padding: 0 8px 0 5px;
+    border-radius: 10px; border: 1px solid var(--stroke); background: var(--glass-strong); cursor: pointer;
+    font-size: 12.5px; font-weight: 700; color: var(--text-primary); transition: box-shadow .15s, border-color .15s;
+  }
+  .sup-btn:hover { border-color: color-mix(in srgb, var(--accent) 45%, transparent); box-shadow: 0 0 0 3px var(--accent-soft); }
+  .sup-btn .n { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .sup-btn .chev { width: 13px; height: 13px; color: var(--text-muted); flex: 0 0 auto; }
+  .sup-btn.unset { border-style: dashed; border-color: color-mix(in srgb, var(--accent) 40%, transparent); background: transparent; color: var(--accent-text); padding: 0 10px 0 8px; }
+  .sup-btn.unset svg { width: 14px; height: 14px; }
+  .dot { width: 22px; height: 22px; border-radius: 7px; display: grid; place-items: center; color: #fff; font-size: 11px; font-weight: 800; flex: 0 0 auto; overflow: hidden; }
+  .dot.logo { background: #fff; box-shadow: inset 0 0 0 1px rgba(30,60,120,0.1); }
+  .dot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .prod[data-pdetail] { cursor: pointer; }
+  .prod[data-pdetail]:hover .pname { color: var(--accent-text); }
+  .pmodal { width: min(640px, 100%); }
+  .pm-head { display: flex; align-items: center; gap: 14px; }
+  .pm-head .thumb { width: 52px; height: 52px; border-radius: 16px; font-size: 18px; }
+  .pm-head h2 { font-size: 18px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .pm-sec { margin-top: 22px; }
+  .pm-title { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 10px; }
+  .pm-title h4 { font-size: 13.5px; font-weight: 800; color: var(--text-secondary); }
+  .pm-label { font-size: 12px; font-weight: 700; color: var(--text-muted); margin: 14px 0 8px; }
+  .pm-empty { padding: 16px; border-radius: 16px; border: 1.5px dashed color-mix(in srgb, var(--status-warning) 55%, transparent); color: var(--text-secondary); font-size: 13px; }
+  .sup-detail { padding: 16px; border-radius: 18px; background: var(--glass-inner); border: 1px solid var(--stroke); }
+  .sd-head { display: flex; align-items: center; gap: 12px; }
+  .sd-head .sd-txt { flex: 1; min-width: 0; }
+  .sd-head b { display: block; font-size: 15.5px; font-weight: 800; }
+  .sd-head span { font-size: 12.5px; color: var(--text-muted); }
+  .sd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px 14px; margin-top: 14px; font-size: 13px; color: var(--text-secondary); }
+  .sd-grid > div { display: flex; align-items: center; gap: 8px; min-width: 0; overflow: hidden; white-space: nowrap; }
+  .sd-grid > div.full { grid-column: 1 / -1; }
+  .sd-grid > div.memo { white-space: pre-wrap; align-items: flex-start; background: var(--glass-strong); border-radius: 12px; padding: 10px 12px; }
+  .sd-grid svg { width: 14px; height: 14px; color: var(--text-muted); flex: 0 0 auto; }
+  .sd-grid a { color: var(--accent-text); text-decoration: none; overflow: hidden; text-overflow: ellipsis; }
+  .sd-grid a:hover { text-decoration: underline; }
+  .pick-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pick-sup {
+    display: inline-flex; align-items: center; gap: 8px; height: 38px; padding: 0 12px 0 7px; border-radius: 12px; cursor: pointer;
+    border: 1px solid var(--stroke); background: var(--glass-strong); font-weight: 700; font-size: 13px; color: var(--text-primary);
+  }
+  .pick-sup:hover { border-color: color-mix(in srgb, var(--accent) 45%, transparent); }
+  .pick-sup.on { background: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 55%, transparent); color: var(--accent-text); }
+  .pick-sup .ck { width: 15px; height: 15px; }
+  .pick-sup.add { border-style: dashed; color: var(--accent-text); background: transparent; padding-left: 10px; }
+  .pick-sup.add svg { width: 15px; height: 15px; }
+  .pick-sup.clear { color: var(--text-muted); background: transparent; padding-left: 12px; }
+  .link-row { display: flex; gap: 8px; }
+  .link-row .field { flex: 1; }
+  .hint { font-weight: 500; color: var(--text-muted); font-size: 11.5px; }
+  .nm-link { display: inline-flex; vertical-align: -2px; margin-left: 4px; color: var(--accent-text); }
+  .nm-link svg { width: 13px; height: 13px; }
+  @media (max-width: 600px) { .sd-grid { grid-template-columns: 1fr; } }
   .modal-bg { position: fixed; inset: 0; z-index: 80; background: rgba(15,25,50,0.28); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); display: none; align-items: center; justify-content: center; padding: 16px; }
   .modal-bg.on { display: flex; animation: fade .2s ease; }
   @keyframes fade { from { opacity: 0; } }
@@ -889,6 +943,13 @@
 </nav>
 
 <!-- 발주처 편집 모달 -->
+<div class="modal-bg" id="prodModal">
+  <div class="modal glass pmodal" role="dialog" aria-modal="true" aria-label="상품 발주 정보">
+    <div id="pmBody"></div>
+    <div class="modal-acts"><button type="button" class="btn primary" id="pmClose">닫기</button></div>
+  </div>
+</div>
+
 <div class="modal-bg" id="supModal">
   <form class="modal glass" id="supForm" autocomplete="off">
     <h2 id="supModalTitle">발주처 추가</h2>
@@ -899,6 +960,7 @@
       <label>연락처<input class="field" name="phone" maxlength="30" placeholder="010-0000-0000"></label>
       <label>이메일<input class="field" name="email" type="email" maxlength="80" placeholder="order@company.com"></label>
       <label>리드타임(일)<input class="field" name="lead" type="number" min="1" max="180" placeholder="7"></label>
+      <label class="full">링크 <span class="hint">발주처 사이트·주문 페이지·카톡 채널 등</span><input class="field" name="link" type="text" inputmode="url" maxlength="300" placeholder="https://"></label>
       <label class="full">최소 발주 / 결제 조건<input class="field" name="terms" maxlength="80" placeholder="예) MOQ 500개, 월말 결제"></label>
       <label class="full">메모<textarea class="field" name="memo" maxlength="400" placeholder="입고지, 특이사항 등"></textarea></label>
     </div>
@@ -2058,7 +2120,7 @@ function compute(p) {
   const outDate = isFinite(daysLeft) ? new Date(baseDate().getTime() + daysLeft * 864e5) : null;
   const orderBy = isFinite(daysLeft) ? daysLeft - lead : null;   // 이 날 안에 발주해야 품절 전 입고
   return { ...p, weeks, ovr, target, avail, sales7, prev7, avg7, daysLeft, status, reorder, outDate,
-           sup, lead, orderBy, cost: +info.cost || 0, memo: info.memo || "" };
+           sup, lead, orderBy, cost: +info.cost || 0, memo: info.memo || "", link: info.link || "" };
 }
 function baseDate() { return new Date(UPDATED_AT.replace(" ", "T") + ":00"); }
 
@@ -2280,10 +2342,12 @@ function drawDonut(parts, total) {
 }
 
 /* ---------------- 2. 재고 현황 ---------------- */
-function supplierSelect(code, cur, cls = "") {
-  const opts = store.suppliers.map((s) => `<option value="${esc(s.id)}" ${s.id === cur ? "selected" : ""}>${esc(s.name)}</option>`).join("");
-  return `<select class="field sm sup-select ${cur ? "" : "unset"} ${cls}" data-code="${esc(code)}">
-    <option value="">${store.suppliers.length ? "미지정" : "발주처 없음"}</option>${opts}<option value="__new">＋ 새 발주처…</option></select>`;
+/* 표 안의 발주처 칸: 버튼. 누르면 상품 상세(발주처 정보·변경·링크)가 열림 */
+function supplierSelect(code, cur) {
+  const s = cur ? supById(cur) : null;
+  return s
+    ? `<button type="button" class="sup-btn" data-pdetail="${esc(code)}" title="${esc(s.name)} — 눌러서 상세 보기">${thumb(s.name, "dot")}<span class="n">${esc(s.name)}</span><svg class="chev"><use href="#i-chev"/></svg></button>`
+    : `<button type="button" class="sup-btn unset" data-pdetail="${esc(code)}"><svg><use href="#i-plus"/></svg><span class="n">발주처 지정</span></button>`;
 }
 function renderInventory() {
   const rows = ROWS;
@@ -2325,7 +2389,7 @@ function renderInventory() {
 
   tbody.innerHTML = list.length ? list.map((r) => `
     <tr data-code="${esc(r.code)}">
-      <td class="left"><div class="prod">${thumb(r.name)}<div><div class="pname">${esc(r.name)}</div><div class="pcode">${esc(r.opt ? `${r.code} · ${r.opt}` : r.code)}</div></div></div></td>
+      <td class="left"><div class="prod" data-pdetail="${esc(r.code)}" title="눌러서 발주 정보 보기">${thumb(r.name)}<div><div class="pname">${esc(r.name)}</div><div class="pcode">${esc(r.opt ? `${r.code} · ${r.opt}` : r.code)}</div></div></div></td>
       <td class="left col-sup">${supplierSelect(r.code, r.sup ? r.sup.id : "")}</td>
       <td class="num-strong">${fmt(r.stock)}</td>
       <td class="${r.backlog ? "days-crit" : "dim"}">${r.backlog ? "−" + fmt(r.backlog) : "–"}</td>
@@ -2431,7 +2495,7 @@ function renderOrders() {
       <div class="table-scroll"><table class="otable">
         <thead><tr><th>상품</th><th>가용</th><th>소진</th><th>수량</th>${amt ? "<th>금액</th>" : ""}</tr></thead>
         <tbody>${g.items.map((i) => `<tr>
-          <td class="nm"><b>${esc(i.name)}</b><span>${esc(i.code)} · ${dueBadge(i)}</span>${s ? "" : `<div style="margin-top:6px">${supplierSelect(i.code, "")}</div>`}</td>
+          <td class="nm"><b>${esc(i.name)}${safeUrl(i.link) ? `<a class="nm-link" href="${esc(safeUrl(i.link))}" target="_blank" rel="noopener noreferrer" title="발주 링크 열기"><svg><use href="#i-link"/></svg></a>` : ""}</b><span>${esc(i.code)} · ${dueBadge(i)}</span>${s ? "" : `<div style="margin-top:6px">${supplierSelect(i.code, "")}</div>`}</td>
           <td>${fmt(i.avail)}</td>
           <td>${fmtDays(i)}</td>
           <td><input type="number" class="field sm qty" min="0" value="${i.qty}" data-code="${esc(i.code)}" title="권장 ${fmt(i.suggest)}개"></td>
@@ -2439,7 +2503,7 @@ function renderOrders() {
         </tr>`).join("")}</tbody></table></div>
       <div class="order-foot">
         <div class="order-sum">${g.items.length}종 · <b>${fmt(sum)}개</b>${amt ? ` · ${won(amt)}` : ""}</div>
-        ${s ? `<button class="btn sm" data-copy="${gi}"><svg><use href="#i-copy"/></svg>발주서 복사</button>
+        ${s ? `${linkBtn(s.link, "발주처 사이트")}<button class="btn sm" data-copy="${gi}"><svg><use href="#i-copy"/></svg>발주서 복사</button>
         <button class="btn sm" data-csv="${gi}"><svg><use href="#i-download"/></svg>엑셀(CSV)</button>
         ${s.email ? `<button class="btn primary sm" data-mail="${gi}"><svg><use href="#i-mail"/></svg>메일 작성</button>` : ""}` : ""}
       </div></div>`;
@@ -2497,6 +2561,7 @@ function renderSuppliers() {
         <div><svg><use href="#i-phone"/></svg><span>${s.phone ? `<a href="tel:${esc(s.phone)}" style="color:inherit">${esc(s.phone)}</a>` : '<span class="dim">연락처 없음</span>'}</span></div>
         <div><svg><use href="#i-mail"/></svg><span>${s.email ? esc(s.email) : '<span class="dim">이메일 없음</span>'}</span></div>
         <div><svg><use href="#i-clock"/></svg><span>리드타임 ${s.lead ? s.lead + "일" : `${store.settings.lead}일(기본값)`}${s.terms ? " · " + esc(s.terms) : ""}</span></div>
+        <div><svg><use href="#i-link"/></svg><span>${safeUrl(s.link) ? `<a href="${esc(safeUrl(s.link))}" target="_blank" rel="noopener noreferrer" style="color:var(--accent-text)">${esc(s.link.replace(/^https?:\/\//, ""))}</a>` : '<span class="dim">링크 없음</span>'}</span></div>
       </div>
       <div class="stat"><div><b>${counts[s.id] || 0}</b><span>연결 상품</span></div><div><b style="color:${needCounts[s.id] ? "var(--status-critical-text)" : "inherit"}">${needCounts[s.id] || 0}</b><span>발주 필요</span></div></div>
       <div class="acts">
@@ -2518,7 +2583,7 @@ function renderMap() {
   $("#mapBody").innerHTML = list.map((r) => `
     <tr>
       <td class="left"><input type="checkbox" class="pick" data-code="${esc(r.code)}" ${selected.has(r.code) ? "checked" : ""} aria-label="선택"></td>
-      <td class="left"><div class="prod">${thumb(r.name)}<div><div class="pname">${esc(r.name)}</div><div class="pcode">${esc(r.code)}</div></div></div></td>
+      <td class="left"><div class="prod" data-pdetail="${esc(r.code)}" title="눌러서 발주 정보 보기">${thumb(r.name)}<div><div class="pname">${esc(r.name)}</div><div class="pcode">${esc(r.code)}</div></div></div></td>
       <td class="num-strong">${fmt(r.stock)}</td>
       <td>${chip(r.status)}</td>
       <td class="left">${supplierSelect(r.code, r.sup ? r.sup.id : "")}</td>
@@ -2575,6 +2640,87 @@ $("#supGrid").addEventListener("click", (e) => {
   }
 });
 
+/* 상품 상세 모달 — 발주처 상세·변경·수정, 상품별 원가·발주 링크·메모 */
+function safeUrl(u) {
+  u = String(u || "").trim(); if (!u) return "";
+  if (!/^[a-z][a-z0-9+.-]*:/i.test(u)) u = "https://" + u;
+  try { const x = new URL(u); return (x.protocol === "https:" || x.protocol === "http:") && x.hostname.includes(".") ? x.href : ""; } catch (e) { return ""; }
+}
+function linkBtn(u, label) {
+  const h = safeUrl(u);
+  return h ? `<a class="btn sm" href="${esc(h)}" target="_blank" rel="noopener noreferrer"><svg><use href="#i-link"/></svg>${esc(label)}</a>` : "";
+}
+function supDetail(s) {
+  const link = safeUrl(s.link);
+  return `<div class="sup-detail">
+    <div class="sd-head">${thumb(s.name, "sup-logo")}<div class="sd-txt"><b>${esc(s.name)}</b><span>${s.manager ? esc(s.manager) : "담당자 미입력"}</span></div>${linkBtn(s.link, "사이트 열기")}</div>
+    <div class="sd-grid">
+      <div><svg><use href="#i-phone"/></svg>${s.phone ? `<a href="tel:${esc(s.phone)}">${esc(s.phone)}</a>` : '<span class="dim">연락처 없음</span>'}</div>
+      <div><svg><use href="#i-mail"/></svg>${s.email ? `<a href="mailto:${esc(s.email)}">${esc(s.email)}</a>` : '<span class="dim">이메일 없음</span>'}</div>
+      <div><svg><use href="#i-clock"/></svg>리드타임 ${s.lead ? s.lead + "일" : store.settings.lead + "일(기본값)"}</div>
+      <div><svg><use href="#i-cart"/></svg>${s.terms ? esc(s.terms) : '<span class="dim">발주 조건 없음</span>'}</div>
+      <div class="full"><svg><use href="#i-link"/></svg>${link ? `<a href="${esc(link)}" target="_blank" rel="noopener noreferrer">${esc(link)}</a>` : '<span class="dim">링크 없음 — 발주처 정보 수정에서 넣을 수 있어요</span>'}</div>
+      ${s.memo ? `<div class="full memo">${esc(s.memo)}</div>` : ""}
+    </div></div>`;
+}
+let prodCode = null, pmSkip = false;
+function openProduct(code) { prodCode = code; renderProd(); $("#prodModal").classList.add("on"); hideTip(); }
+function closeProduct() { $("#prodModal").classList.remove("on"); prodCode = null; }
+function renderProd() {
+  const r = ROWS.find((x) => x.code === prodCode); if (!r) return closeProduct();
+  const s = r.sup, info = pinfo(r.code), plink = safeUrl(info.link);
+  $("#pmBody").innerHTML = `
+    <div class="pm-head">${thumb(r.name)}<div style="min-width:0;flex:1"><h2>${esc(r.name)}</h2>
+      <p class="sub">${esc(r.code)} · 현재고 ${fmt(r.stock)}개 · 7일 판매 ${fmt(r.sales7)}개${r.reorder ? ` · <b style="color:var(--status-critical-text)">발주 권장 ${fmt(r.reorder)}개</b>` : ""}</p></div>${chip(r.status)}</div>
+    <div class="pm-sec">
+      <div class="pm-title"><h4>발주처</h4>${s ? `<button type="button" class="btn ghost sm" data-pm="edit-sup"><svg><use href="#i-edit"/></svg>발주처 정보 수정</button>` : ""}</div>
+      ${s ? supDetail(s) : `<div class="pm-empty">아직 발주처가 없어요. 아래에서 고르거나 새로 추가하세요.</div>`}
+      <div class="pm-label">${s ? "다른 발주처로 바꾸기" : "발주처 고르기"}</div>
+      <div class="pick-grid">
+        ${store.suppliers.map((x) => `<button type="button" class="pick-sup ${s && x.id === s.id ? "on" : ""}" data-pm="pick" data-id="${esc(x.id)}">${thumb(x.name, "dot")}<span>${esc(x.name)}</span>${s && x.id === s.id ? '<svg class="ck"><use href="#i-check"/></svg>' : ""}</button>`).join("")}
+        <button type="button" class="pick-sup add" data-pm="new-sup"><svg><use href="#i-plus"/></svg><span>새 발주처</span></button>
+        ${s ? `<button type="button" class="pick-sup clear" data-pm="pick" data-id="">지정 해제</button>` : ""}
+      </div>
+    </div>
+    <div class="pm-sec">
+      <div class="pm-title"><h4>이 상품의 발주 정보</h4></div>
+      <div class="form" style="margin-top:0">
+        <label>원가(원)<input class="field" type="number" min="0" step="10" data-pf="cost" value="${info.cost ?? ""}" placeholder="0"></label>
+        <label>재고금액<input class="field" disabled value="${r.cost ? won(r.cost * r.stock) : "원가를 넣으면 계산돼요"}"></label>
+        <label class="full">발주 링크 <span class="hint">발주처의 이 상품 페이지·주문서·구글시트 주소</span>
+          <div class="link-row"><input class="field" type="text" inputmode="url" maxlength="300" data-pf="link" value="${esc(info.link || "")}" placeholder="https://">${plink ? `<a class="btn" href="${esc(plink)}" target="_blank" rel="noopener noreferrer"><svg><use href="#i-link"/></svg>열기</a>` : ""}</div></label>
+        <label class="full">메모<input class="field" maxlength="120" data-pf="memo" value="${esc(info.memo || "")}" placeholder="예) 2박스 단위, 옵션 확인"></label>
+      </div>
+    </div>`;
+}
+$("#pmClose").addEventListener("click", closeProduct);
+$("#prodModal").addEventListener("click", (e) => {
+  if (e.target.id === "prodModal") return closeProduct();
+  const b = e.target.closest("[data-pm]"); if (!b || !prodCode) return;
+  const code = prodCode, act = b.dataset.pm;
+  if (act === "edit-sup") openSupplier(pinfo(code).supplierId);
+  else if (act === "new-sup") openSupplier(null, (s) => { setPinfo(code, { supplierId: s.id }); commit(); toast(`'${s.name}' 추가 후 연결했어요`); });
+  else if (act === "pick") {
+    const id = b.dataset.id || null;
+    if (id === (pinfo(code).supplierId || null)) return;
+    setPinfo(code, { supplierId: id }); commit();
+    toast(id ? `발주처를 '${supById(id).name}'(으)로 바꿨어요` : "발주처 지정을 해제했어요");
+  }
+});
+$("#prodModal").addEventListener("change", (e) => {
+  const t = e.target.closest("[data-pf]"); if (!t || !prodCode) return;
+  const k = t.dataset.pf, v = t.value.trim();
+  if (k === "cost") setPinfo(prodCode, { cost: v === "" ? null : Math.max(0, +v) });
+  else if (k === "link") {
+    const u = safeUrl(v);
+    if (v && !u) { toast("링크 주소를 확인하세요 (https:// 로 시작)"); return; }
+    setPinfo(prodCode, { link: u || null }); t.value = u;
+  } else setPinfo(prodCode, { memo: v || null });
+  pmSkip = k !== "link";          // 링크는 '열기' 버튼이 생겨야 해서 다시 그림
+  commit(); pmSkip = false;
+  if (k === "cost") { const r = ROWS.find((x) => x.code === prodCode); const out = $("#pmBody input[disabled]"); if (r && out) out.value = r.cost ? won(r.cost * r.stock) : "원가를 넣으면 계산돼요"; }
+});
+
 /* 발주처 모달 */
 let editingId = null, afterSave = null;
 function openSupplier(id, cb) {
@@ -2582,7 +2728,7 @@ function openSupplier(id, cb) {
   const s = id ? supById(id) : {};
   const f = $("#supForm");
   f.reset();
-  ["name", "manager", "phone", "email", "lead", "terms", "memo"].forEach((k) => (f.elements[k].value = s[k] ?? ""));
+  ["name", "manager", "phone", "email", "lead", "link", "terms", "memo"].forEach((k) => (f.elements[k].value = s[k] ?? ""));
   $("#supModalTitle").textContent = id ? "발주처 수정" : "발주처 추가";
   $("#supDelete").style.display = id ? "" : "none";
   $("#supModal").classList.add("on");
@@ -2591,11 +2737,16 @@ function openSupplier(id, cb) {
 function closeSupplier() { $("#supModal").classList.remove("on"); editingId = null; afterSave = null; }
 $("#supCancel").addEventListener("click", closeSupplier);
 $("#supModal").addEventListener("click", (e) => { if (e.target.id === "supModal") closeSupplier(); });
-document.addEventListener("keydown", (e) => { if (e.key === "Escape" && $("#supModal").classList.contains("on")) closeSupplier(); });
+document.addEventListener("keydown", (e) => {
+  if (e.key !== "Escape") return;
+  if ($("#supModal").classList.contains("on")) closeSupplier();
+  else if ($("#prodModal").classList.contains("on")) closeProduct();
+});
 $("#supForm").addEventListener("submit", (e) => {
   e.preventDefault();
   const f = e.target, v = (k) => f.elements[k].value.trim();
-  const data = { name: v("name"), manager: v("manager"), phone: v("phone"), email: v("email"), lead: v("lead") ? Math.max(1, +v("lead")) : null, terms: v("terms"), memo: v("memo") };
+  const data = { name: v("name"), manager: v("manager"), phone: v("phone"), email: v("email"), lead: v("lead") ? Math.max(1, +v("lead")) : null, link: safeUrl(v("link")), terms: v("terms"), memo: v("memo") };
+  if (v("link") && !data.link) { toast("링크 주소를 확인하세요 (https:// 로 시작)"); return; }
   if (!data.name) return;
   Object.keys(data).forEach((k) => (data[k] === "" || data[k] == null) && delete data[k]);
   let s;
@@ -2678,8 +2829,11 @@ function renderAll() {
   $("#sideUpdated").textContent = "갱신 " + UPDATED_AT.slice(5);
   if (CAPTURE) { renderInventory(); return; }
   renderView();
+  if (prodCode && !pmSkip) renderProd();
 }
 document.addEventListener("click", (e) => {
+  const pd = e.target.closest("[data-pdetail]");
+  if (pd) { openProduct(pd.dataset.pdetail); return; }
   const go = e.target.closest("[data-go]");
   if (go) {
     if (go.dataset.focus === "unassigned") { mapFilter = "unassigned"; $$("#mapSeg button").forEach((x) => x.classList.toggle("active", x.dataset.m === "unassigned")); }
