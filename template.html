@@ -541,7 +541,7 @@
   /* ============ 카톡 요약 이미지 캡처 모드 (scrape.js 가 file:// 로 열 때) ============ */
   body.capture .side, body.capture .topbar, body.capture .tabbar,
   body.capture .view:not(#view-inventory), body.capture .no-capture,
-  body.capture th.col-sup, body.capture td.col-sup { display: none !important; }
+  body.capture th.col-sup, body.capture td.col-sup, body.capture .col-cost { display: none !important; }
   body.capture .app { grid-template-columns: minmax(0,1fr); padding: 26px; }
   body.capture #view-inventory { display: flex !important; animation: none; }
   body.capture .cap-only { display: flex !important; }
@@ -744,7 +744,7 @@
                 <th class="left nosort" data-k="trend" title="최근 14일 판매 추이">14일 추이</th>
                 <th data-k="daysLeft">소진 예상 <span class="arrow"></span></th>
                 <th class="left nosort" data-k="weeks">기준(주)</th>
-                <th data-k="safety">적정재고 <span class="arrow"></span></th>
+                <th data-k="value" class="col-cost" title="상품 1개 원가 · 아래는 현재고 × 원가">원가 · 재고금액 <span class="arrow"></span></th>
                 <th data-k="status">상태 <span class="arrow"></span></th>
                 <th data-k="reorder">발주 권장 <span class="arrow"></span></th>
               </tr>
@@ -787,7 +787,7 @@
 
       <div class="card glass" id="mapCard">
         <div class="card-head">
-          <div><h2>상품별 발주처 지정</h2><p>표에서 바로 고르거나, 여러 개를 체크해서 한 번에 지정하세요. 단가를 넣으면 발주 금액이 계산됩니다.</p></div>
+          <div><h2>상품별 발주처 지정</h2><p>표에서 바로 고르거나, 여러 개를 체크해서 한 번에 지정하세요. 원가를 넣으면 재고금액·발주 금액이 계산됩니다.</p></div>
         </div>
         <div class="filters" style="margin-bottom:12px">
           <input type="search" class="field" id="mapQ" placeholder="상품 검색" style="width:220px">
@@ -811,7 +811,7 @@
               <th class="nosort">현재고</th>
               <th class="nosort">상태</th>
               <th class="left nosort">발주처</th>
-              <th class="nosort">단가(원)</th>
+              <th class="nosort">원가(원)</th>
               <th class="left nosort">메모</th>
             </tr></thead>
             <tbody id="mapBody"></tbody>
@@ -847,7 +847,7 @@
         </div>
 
         <div class="card glass">
-          <div class="card-head"><div><h2>발주처 데이터 저장</h2><p>발주처·상품 연결·단가·메모가 저장되는 곳</p></div></div>
+          <div class="card-head"><div><h2>발주처 데이터 저장</h2><p>발주처·상품 연결·원가·메모가 저장되는 곳</p></div></div>
           <div class="set-row">
             <div><b>현재 상태</b><span id="syncDesc">—</span></div>
             <button class="btn sm" id="syncNow"><svg><use href="#i-sync"/></svg>지금 저장</button>
@@ -1159,13 +1159,14 @@ function renderOverview() {
   const sales7 = rows.reduce((a, r) => a + r.sales7, 0), prev7 = rows.reduce((a, r) => a + r.prev7, 0);
   const totalUnits = rows.reduce((a, r) => a + r.stock, 0);
   const assigned = rows.filter((r) => r.sup).length;
+  const stockValue = rows.reduce((a, r) => a + r.cost * r.stock, 0);
   const h = new Date().getHours();
   $("#greet").textContent = (h < 11 ? "좋은 아침이에요" : h < 18 ? "좋은 오후예요" : "오늘도 수고하셨어요") + " 👋";
   $("#heroLede").innerHTML = need.length
     ? `지금 <b>${need.length}개 상품</b>을 발주해야 해요. 기준 ${esc(UPDATED_AT)}`
     : `발주가 급한 상품은 없어요. 기준 ${esc(UPDATED_AT)}`;
   $("#kpis").innerHTML = [
-    { icon: "i-box", label: "전체 상품", value: fmt(rows.length), unit: "SKU", sub: `총 재고 ${fmt(totalUnits)}개` },
+    { icon: "i-box", label: "전체 상품", value: fmt(rows.length), unit: "SKU", sub: `총 재고 ${fmt(totalUnits)}개` + (stockValue ? ` · ${won(stockValue)}` : "") },
     { icon: "i-alert", ic: "crit", label: "발주 필요", value: fmt(need.length), unit: "건", sub: `품절 ${cnt("품절")} · 주의 ${cnt("주의")}` },
     { icon: "i-trend", ic: "good", label: "7일 판매", value: fmt(sales7), unit: "개", sub: delta(sales7, prev7) },
     { icon: "i-truck", label: "발주처 연결", value: `${assigned}<small>/${rows.length}</small>`, sub: `발주처 ${store.suppliers.length}곳 등록` },
@@ -1319,7 +1320,7 @@ function renderInventory() {
     name: (r) => r.name + r.opt, supplier: (r) => (r.sup ? r.sup.name : "힣힣"), stock: (r) => r.stock, backlog: (r) => r.backlog,
     sales7: (r) => r.sales7, avg7: (r) => r.avg7,
     daysLeft: (r) => (r.status === "품절" ? -1 : r.status === "판매없음" ? Infinity : r.daysLeft),
-    weeks: (r) => r.weeks, safety: (r) => r.target, status: (r) => STATUS_ORDER[r.status], reorder: (r) => r.reorder,
+    weeks: (r) => r.weeks, value: (r) => r.cost * r.stock, status: (r) => STATUS_ORDER[r.status], reorder: (r) => r.reorder,
   };
   const kf = keyFns[sortKey] || keyFns.daysLeft;
   list.sort((a, b) => {
@@ -1341,15 +1342,17 @@ function renderInventory() {
       <td><div>${fmt(r.sales7)}</div><div class="pcode">일 ${r.avg7.toFixed(1)}</div></td>
       <td class="left">${sparkline(r.daily)}</td>
       <td>${fmtDays(r)}</td>
-      <td class="left">${r.avg7 > 0 ? `<input class="wk ${r.ovr ? "ovr" : ""}" type="number" min="1" max="52" value="${r.weeks}" data-code="${esc(r.code)}">` : '<span class="dim">–</span>'}</td>
-      <td class="dim">${r.avg7 > 0 ? fmt(r.target) : "–"}</td>
+      <td class="left">${r.avg7 > 0 ? `<input class="wk ${r.ovr ? "ovr" : ""}" type="number" min="1" max="52" value="${r.weeks}" data-code="${esc(r.code)}"><div class="pcode">적정 ${fmt(r.target)}</div>` : '<span class="dim">–</span>'}</td>
+      <td class="col-cost"><input class="wk costin" type="number" min="0" step="10" value="${r.cost || ""}" placeholder="원가" data-code="${esc(r.code)}" style="width:84px"><div class="pcode">${r.cost ? won(r.cost * r.stock) : "&nbsp;"}</div></td>
       <td>${chip(r.status)}</td>
       <td>${r.reorder ? `<span class="reorder-qty">${fmt(r.reorder)}개</span>` : '<span class="dim">–</span>'}</td>
     </tr>`).join("")
     : `<tr><td colspan="11"><div class="empty">조건에 맞는 상품이 없어요.</div></td></tr>`;
 
   const ovrCount = Object.values(store.products).filter((p) => p.weeks != null).length;
-  $("#invUpdated").textContent = `기준 ${UPDATED_AT} · 적정재고 ${globalWeeks}주` + (ovrCount ? ` (개별조정 ${ovrCount}건)` : "") + ` · ${list.length}개 표시`;
+  const valued = rows.filter((r) => r.cost), stockValue = valued.reduce((a, r) => a + r.cost * r.stock, 0);
+  $("#invUpdated").textContent = `기준 ${UPDATED_AT} · 적정재고 ${globalWeeks}주` + (ovrCount ? ` (개별조정 ${ovrCount}건)` : "") + ` · ${list.length}개 표시`
+    + (valued.length ? ` · 재고금액 ${won(stockValue)} (원가 입력 ${valued.length}/${rows.length})` : " · 원가 칸에 입력하면 재고금액이 계산돼요");
 }
 tbody.addEventListener("pointermove", (e) => {
   const tr = e.target.closest("tr[data-code]");
@@ -1363,9 +1366,12 @@ tbody.addEventListener("pointermove", (e) => {
 tbody.addEventListener("pointerleave", hideTip);
 tbody.addEventListener("change", (e) => {
   const t = e.target;
-  if (t.classList.contains("wk")) {
+  if (t.classList.contains("wk") && !t.classList.contains("costin")) {
     const v = Math.max(1, Math.min(52, parseInt(t.value) || globalWeeks));
     setPinfo(t.dataset.code, { weeks: v === globalWeeks ? null : v });
+    commit();
+  } else if (t.classList.contains("costin")) {
+    setPinfo(t.dataset.code, { cost: t.value === "" ? null : Math.max(0, +t.value) });
     commit();
   } else if (t.classList.contains("sup-select")) assignFromSelect(t);
 });
@@ -1410,7 +1416,7 @@ function renderOrders() {
     { icon: "i-cart", label: "발주 대상", value: fmt(items.length), unit: "개 상품", sub: `발주처 ${groups.filter((g) => g.sup).length}곳` },
     { icon: "i-alert", ic: "crit", label: "즉시 발주", value: fmt(late), unit: "건", sub: "리드타임상 지금 넣어야 함" },
     { icon: "i-box", label: "총 수량", value: fmt(totalQty), unit: "개", sub: "권장 수량 기준(수정 가능)" },
-    { icon: "i-trend", ic: "good", label: "예상 금액", value: totalAmt ? fmt(totalAmt) : "–", unit: totalAmt ? "원" : "", sub: totalAmt ? "단가 입력 상품 기준" : "발주처 메뉴에서 단가 입력" },
+    { icon: "i-trend", ic: "good", label: "예상 금액", value: totalAmt ? fmt(totalAmt) : "–", unit: totalAmt ? "원" : "", sub: totalAmt ? "원가 입력 상품 기준" : "재고 현황에서 원가 입력" },
   ].map(kpiHTML).join("");
 
   if (!items.length) {
@@ -1476,7 +1482,7 @@ $("#orderCards").addEventListener("click", async (e) => {
     try { await navigator.clipboard.writeText(text); toast("발주서를 복사했어요 — 카톡·문자에 붙여넣으세요"); }
     catch (err) { prompt("아래 내용을 복사하세요", text); }
   } else if (b.dataset.csv != null) {
-    const head = ["상품코드", "상품명", "발주수량", "단가", "금액", "가용재고", "7일판매"];
+    const head = ["상품코드", "상품명", "발주수량", "원가", "금액", "가용재고", "7일판매"];
     const lines = [head, ...g.items.map((i) => [i.code, i.name, i.qty, i.cost || "", i.cost ? i.qty * i.cost : "", i.avail, i.sales7])]
       .map((r) => r.map((v) => `"${String(v).replace(/"/g, '""')}"`).join(","));
     const blob = new Blob(["﻿" + lines.join("\r\n")], { type: "text/csv;charset=utf-8" });
