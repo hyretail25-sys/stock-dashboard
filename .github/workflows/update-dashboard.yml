@@ -42,6 +42,15 @@ jobs:
           EZ_PW: ${{ secrets.EZ_PW }}
         run: node scrape.js
 
+      - name: 실패 시 진단 화면 보관
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ezadmin-debug
+          path: debug/
+          if-no-files-found: ignore
+          retention-days: 7
+
       - name: 변경사항 커밋
         run: |
           git config user.name "dashboard-bot"

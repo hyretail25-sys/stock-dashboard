@@ -91,7 +91,8 @@ async function main() {
   await page.goto(origin + "/template40.htm?template=IE10", { waitUntil: "domcontentloaded", timeout: 60000 });
   await page.waitForTimeout(3000);
 
-  await page.evaluate(
+  // 검색 조건 넣기 (기간·작업=발주) — 시도할 때마다 다시 넣는다
+  const applyFilters = () => page.evaluate(
     ({ s, e }) => {
       // 기간 시작/종료 입력: 값이 YYYY-MM-DD 형태인 처음 두 input
       const dateInputs = [...document.querySelectorAll('input[type=text]')].filter((i) =>
@@ -111,13 +112,16 @@ async function main() {
         sel.value = "order";
         sel.dispatchEvent(new Event("change", { bubbles: true }));
       }
+      return {
+        dates: dateInputs.slice(0, 2).map((i) => i.value),
+        work: sel ? sel.value : "(작업 선택칸 없음)",
+        selects: [...document.querySelectorAll("select")].map((x) => (x.name || x.id || "?") + "=" + x.value).slice(0, 12),
+      };
     },
     { s: ymd(start), e: ymd(end) }
   );
-  await page.click('text=검색(F2)');
-  await page.waitForTimeout(5000);
 
-  const salesRows = await page.evaluate(() => {
+  const readSales = () => page.evaluate(() => {
     const ht = document.querySelector(".ui-jqgrid-htable");
     const bt = document.querySelector(".ui-jqgrid-btable");
     if (!ht || !bt) return { error: "그리드를 찾지 못함" };
@@ -133,13 +137,46 @@ async function main() {
         daily: dayCols.map((i) => num(r.cells[i] && r.cells[i].innerText)),
       }))
       .filter((r) => r.code);
+    const loading = [...document.querySelectorAll(".loading.ui-jqgrid-loading, .ui-jqgrid .loading, [id^=load_]")]
+      .some((el) => el.offsetParent !== null && getComputedStyle(el).display !== "none");
     return {
-      heads, rows, dayCount: dayCols.length, codeIdx,
+      heads, rows, dayCount: dayCols.length, codeIdx, loading,
       gridRowCount: bt.rows.length,
       firstRow: bt.rows[0] ? [...bt.rows[0].cells].map((c) => c.innerText.trim().slice(0, 50)) : [],
       gridMessage: document.querySelector(".ui-jqgrid-empty, .ui-jqgrid-norecords")?.innerText.trim() || "",
+      pager: document.querySelector(".ui-paging-info")?.innerText.trim() || "",
     };
   });
+
+  // 이지어드민 응답이 늦는 날이 있어 결과가 나올 때까지 기다리고, 비어 있으면 다시 검색한다
+  let salesRows = null;
+  for (let attempt = 1; attempt <= 4 && !(salesRows && salesRows.rows && salesRows.rows.length); attempt++) {
+    if (attempt === 3) {
+      // 두 번 비면 페이지를 새로 열어서 다시 시도
+      await page.goto(origin + "/template40.htm?template=IE10", { waitUntil: "domcontentloaded", timeout: 60000 });
+      await page.waitForTimeout(4000);
+    }
+    const applied = await applyFilters();
+    console.log(`  시도 ${attempt}: 조건`, JSON.stringify(applied));
+    await page.waitForTimeout(800);
+    await page.click('text=검색(F2)');
+    const deadline = Date.now() + 30000;
+    await page.waitForTimeout(3000);
+    do {
+      salesRows = await readSales();
+      if (salesRows.error || salesRows.rows.length) break;
+      await page.waitForTimeout(2000);
+    } while (Date.now() < deadline);
+    console.log(`  시도 ${attempt}: ${salesRows.error || salesRows.rows.length + "개 품목"} ${salesRows.pager || ""} ${salesRows.loading ? "(로딩 중)" : ""}`);
+  }
+  if (!(salesRows.rows && salesRows.rows.length)) {
+    try {
+      fs.mkdirSync("debug", { recursive: true });
+      await page.screenshot({ path: "debug/ie10.png", fullPage: true });
+      fs.writeFileSync("debug/ie10.html", await page.content());
+      console.log("진단용 화면 저장: debug/ie10.png");
+    } catch (e) { console.log("진단 화면 저장 실패:", e.message); }
+  }
   if (salesRows.error) throw new Error("일자별 재고조회: " + salesRows.error);
   console.log(`판매 데이터 ${salesRows.rows.length}개 품목, ${salesRows.dayCount}일치 수집`);
   if (salesRows.dayCount !== DAYS || salesRows.rows.length === 0) {
