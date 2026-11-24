@@ -193,9 +193,15 @@ async function main() {
   console.log("[4/4] 대시보드 생성");
   const salesMap = Object.fromEntries(salesRows.rows.map((r) => [r.code, r.daily]));
   const zero = Array(DAYS).fill(0);
+  // 이지어드민 상품명 → 대시보드 표시명 (앞부분이 같으면 뒤 글자는 유지: "성장판자극기 리모컨" → "키르메스 그로우맥스프로 리모컨")
+  const RENAME = [["성장판자극기", "키르메스 그로우맥스프로"]];
+  const displayName = (n) => {
+    for (const [from, to] of RENAME) if (n.startsWith(from)) return to + n.slice(from.length);
+    return n;
+  };
   const products = stockRows.rows.map((r) => ({
     code: r.code,
-    name: r.name,
+    name: displayName(r.name),
     opt: "",
     stock: r.stock,
     backlog: r.backlog,
